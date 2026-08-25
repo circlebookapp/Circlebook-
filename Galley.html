@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Minimal Upload Test</title>
+<style>
+body{margin:0;font-family:sans-serif;background:#f0f2f5;padding:20px}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px}
+button, label{padding:12px 20px;border-radius:999px;border:none;font-weight:700;font-size:14px;cursor:pointer;display:inline-block;margin:4px}
+</style>
+</head>
+<body>
+<h2>Minimal Upload Test - CircleBook</h2>
+<p>If this works, main file has JS error blocking it. If this fails, phone/browser blocks file input.</p>
+
+<div class="card">
+<h3>Test 1: Direct file inputs (should always work)</h3>
+<input type="file" id="test1" accept="image/*" style="margin:8px 0"><br>
+<input type="file" id="test2" accept="video/*" style="margin:8px 0"><br>
+<div id="out1"></div>
+</div>
+
+<div class="card">
+<h3>Test 2: Label method (used in main file)</h3>
+<input type="file" id="imgFile" accept="image/*" style="position:absolute;left:-9999px;width:1px;height:1px">
+<input type="file" id="vidFile" accept="video/*" style="position:absolute;left:-9999px;width:1px;height:1px">
+<label for="imgFile" style="background:#000;color:#fff">📷 Tap Photo Label</label>
+<label for="vidFile" style="background:#000;color:#fff">🎥 Tap Video Label</label>
+<div id="out2" style="margin-top:12px"></div>
+<img id="prevImg" style="max-width:100%;border-radius:12px;display:none;margin-top:8px">
+<video id="prevVideo" controls style="max-width:100%;border-radius:12px;display:none;margin-top:8px;background:#000"></video>
+</div>
+
+<div class="card">
+<h3>Test 3: Button with JS click</h3>
+<input type="file" id="imgFile2" accept="image/*" style="position:absolute;left:-9999px">
+<button onclick="document.getElementById('imgFile2').click(); alert('Button clicked - should open gallery')" style="background:#ff6b2b;color:#fff">📷 Button JS Click</button>
+<div id="out3"></div>
+</div>
+
+<script>
+document.getElementById('test1').addEventListener('change', function(e){
+  var f=e.target.files[0];
+  if(f){ document.getElementById('out1').innerHTML='Image selected: '+f.name+' '+ (f.size/1024).toFixed(1)+'KB ✓'; alert('Test1 Image works: '+f.name); }
+});
+document.getElementById('test2').addEventListener('change', function(e){
+  var f=e.target.files[0];
+  if(f){ document.getElementById('out1').innerHTML+='<br>Video selected: '+f.name+' '+ (f.size/1024/1024).toFixed(1)+'MB ✓'; alert('Test1 Video works: '+f.name); }
+});
+
+document.getElementById('imgFile').addEventListener('change', function(e){
+  var f=e.target.files[0];
+  if(!f) return;
+  alert('Label Photo works: '+f.name);
+  var url=URL.createObjectURL(f);
+  var img=document.getElementById('prevImg');
+  img.src=url; img.style.display='block';
+  document.getElementById('out2').innerText='Photo: '+f.name+' '+(f.size/1024).toFixed(1)+'KB ✓';
+});
+document.getElementById('vidFile').addEventListener('change', function(e){
+  var f=e.target.files[0];
+  if(!f) return;
+  alert('Label Video works: '+f.name+' '+(f.size/1024/1024).toFixed(1)+'MB');
+  var url=URL.createObjectURL(f);
+  var vid=document.getElementById('prevVideo');
+  vid.src=url; vid.style.display='block';
+  document.getElementById('out2').innerText='Video: '+f.name+' '+(f.size/1024/1024).toFixed(1)+'MB ✓';
+});
+
+document.getElementById('imgFile2').addEventListener('change', function(e){
+  var f=e.target.files[0];
+  if(f){ alert('Button JS method works: '+f.name); document.getElementById('out3').innerText='Works: '+f.name; }
+});
+</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
+</html>
+
