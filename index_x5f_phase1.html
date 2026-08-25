@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CircleBook - Your Real Circle</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@400;600&display=swap');body{font-family:Inter,sans-serif;background:#f8fafc}.jakarta{font-family:'Plus Jakarta Sans',sans-serif}.grad{background:linear-gradient(135deg,#0f172a 0%,#ff6b2b 100%)}</style>
+</head><body>
+<header class="sticky top-0 z-50 bg-white border-b px-4 py-3 flex justify-between items-center">
+<div class="flex items-center gap-2"><div class="w-9 h-9 rounded-xl grad text-white flex items-center justify-center font-black">CB</div><div><div class="jakarta font-extrabold leading-none">CircleBook</div><div class="text-[9px] text-gray-500 font-bold tracking-widest">23 FEATURES • CB</div></div></div>
+<button onclick="openWallet()" class="bg-black text-white px-3 py-2 rounded-full text-xs font-bold">Owner: ₦<span id="bal">0</span></button>
+</header>
+
+<section class="max-w-[640px] mx-auto px-4 pt-6">
+<div class="bg-white rounded-[20px] p-4 border shadow-sm text-center">
+<div class="w-16 h-16 rounded-[16px] grad text-white flex items-center justify-center font-black text-[24px] mx-auto">CB</div>
+<h1 class="jakarta text-[28px] font-extrabold mt-3 leading-[0.9]">Your Real Circle,<br><span class="text-[#ff6b2b]">Real People</span></h1>
+<p class="text-[13px] text-gray-600 mt-2">Facebook + Instagram + TikTok combined. 23 features. Email+Phone only. No NIN, No Badge.</p>
+<p class="text-[11px] text-[#ff6b2b] font-bold mt-1">Contact: Circlebookapp@hotmail.com</p>
+<div class="grid grid-cols-3 gap-2 mt-4 text-[11px]">
+<div class="bg-gray-50 rounded-xl p-2"><b>📧 Email</b><br>Verified</div>
+<div class="bg-gray-50 rounded-xl p-2"><b>📱 Phone</b><br>Verified</div>
+<div class="bg-gray-50 rounded-xl p-2"><b>👤 One</b><br>Account</div>
+</div>
+<div class="flex gap-2 mt-4">
+<button onclick="openAuth()" class="flex-1 bg-black text-white py-3 rounded-full font-bold">Join CircleBook</button>
+<button onclick="document.getElementById('feed').scrollIntoView()" class="flex-1 bg-white border-2 border-black py-3 rounded-full font-bold">View Feed</button>
+</div>
+</div>
+
+<div id="feed" class="mt-6 space-y-3">
+<div class="bg-white rounded-[16px] border p-4">
+<div class="flex justify-between items-center"><div class="flex gap-2 items-center"><div class="w-8 h-8 rounded-full grad text-white flex items-center justify-center font-bold text-xs">CB</div><div><div class="font-bold text-sm">CircleBook Official</div><div class="text-[10px] text-gray-500">Warri • Now • CB Badge</div></div></div><button class="text-xs border px-3 py-1 rounded-full font-bold">Follow</button></div>
+<p class="text-[14px] mt-3">Welcome to CircleBook! 🎉 Your Real Circle is here. Follow, post, chat, livestream, business circles, religious groups, countries chat & more. 23 features live!</p>
+<img src="https://picsum.photos/600/340" class="w-full rounded-xl mt-3">
+<div class="flex gap-4 mt-3 text-[13px] text-gray-600"><span>❤️ 1.2k Like</span><span>💬 234 Comment</span><span>↗️ Share</span><span>🚩 Report</span></div>
+</div>
+</div>
+
+<div class="mt-6 grid grid-cols-2 gap-3">
+<button onclick="openChat('Public Chat')" class="bg-white border rounded-2xl p-3 text-left"><b class="text-sm">💬 Public Chat</b><div class="text-[11px] text-gray-500">Open chatrooms</div></button>
+<button onclick="openChat('Countries Chat')" class="bg-white border rounded-2xl p-3 text-left"><b class="text-sm">🌍 Countries Chat</b><div class="text-[11px] text-gray-500">Nigeria, Ghana, USA...</div></button>
+<button onclick="openChat('Business Circles')" class="bg-white border rounded-2xl p-3 text-left"><b class="text-sm">💼 Business Circles</b><div class="text-[11px] text-gray-500">Fashion, Food, Events</div></button>
+<button onclick="openChat('Religious Groups')" class="bg-white border rounded-2xl p-3 text-left"><b class="text-sm">🙏 Religious Groups</b><div class="text-[11px] text-gray-500">Christian, Muslim...</div></button>
+</div>
+
+<div class="mt-6 bg-black rounded-[20px] p-4 text-white">
+<h3 class="jakarta font-bold">Owner Wallet - You Earn As Users Use App</h3>
+<div class="mt-3 bg-white text-black rounded-xl p-3 flex justify-between"><div><div class="text-[11px] text-gray-500">Balance - Circlebookapp@hotmail.com</div><div class="font-black text-xl">₦<span id="bal2">0</span></div></div><button onclick="openWallet()" class="bg-black text-white px-4 py-2 rounded-full text-xs font-bold">Withdraw</button></div>
+<div class="grid grid-cols-3 gap-2 mt-3 text-[10px]"><div class="bg-white/10 rounded-xl p-2 text-center">Data 10%</div><div class="bg-white/10 rounded-xl p-2 text-center">Ad ₦2/view</div><div class="bg-white/10 rounded-xl p-2 text-center">Circle ₦500</div></div>
+</div>
+
+<div class="mt-6 bg-white rounded-[20px] border p-4">
+<h3 class="font-bold">Quick Actions - All Features</h3>
+<div class="grid grid-cols-3 gap-2 mt-3 text-[11px]">
+<button class="border rounded-xl p-2">➕ Follow</button><button class="border rounded-xl p-2">📤 Share</button><button class="border rounded-xl p-2">🚩 Report</button>
+<button class="border rounded-xl p-2">👥 Group/Page</button><button class="border rounded-xl p-2">🏅 Circle Badge</button><button class="border rounded-xl p-2">🔴 Livestream</button>
+<button class="border rounded-xl p-2">💬 Private Chat</button><button class="border rounded-xl p-2">🌍 Countries Room</button><button class="border rounded-xl p-2">💭 Comment</button>
+<button class="border rounded-xl p-2">💰 Adt Earned</button><button class="border rounded-xl p-2">📹 Upload Video</button><button class="border rounded-xl p-2">🖼️ Upload Pic</button>
+<button class="border rounded-xl p-2">📰 All News</button><button class="border rounded-xl p-2">💬 Messenger</button><button class="border rounded-xl p-2">🔒 Public/Private</button>
+</div>
+<p class="text-[10px] text-gray-400 mt-3 text-center">Full 23 features - Phase 1 live. More in Phase 2 & 3. Contact: Circlebookapp@hotmail.com</p>
+</div>
+</section>
+
+<div id="auth" class="fixed inset-0 hidden z-[60] bg-black/50 flex items-center justify-center p-4"><div class="bg-white w-full max-w-[360px] rounded-[20px] p-5"><h3 class="jakarta font-bold">Join CircleBook</h3><p class="text-[11px] text-gray-500">Email+Phone only. No badge. CB logo Black+Orange.</p><input id="e" placeholder="Email" class="w-full border rounded-xl px-3 py-2.5 mt-3 text-sm"><input id="p" placeholder="Phone +234" class="w-full border rounded-xl px-3 py-2.5 mt-2 text-sm"><button onclick="doAuth()" class="w-full bg-black text-white py-3 rounded-full font-bold mt-3">Verify Email+Phone</button><div id="otpBox" class="hidden mt-3"><input id="otp" placeholder="OTP 123456" class="w-full border rounded-xl px-3 py-2.5"><button onclick="verify()" class="w-full bg-[#ff6b2b] text-white py-3 rounded-full font-bold mt-2">Enter</button></div><p class="text-[10px] text-center text-gray-400 mt-2">Circlebookapp@hotmail.com</p></div></div>
+
+<div id="walletM" class="fixed inset-0 hidden z-[70] bg-black/60 flex items-center justify-center p-4"><div class="bg-white w-full max-w-[360px] rounded-[24px] p-5"><h3 class="jakarta font-bold text-lg">Owner Wallet</h3><div class="bg-black text-white rounded-xl p-4 mt-3"><div class="text-[11px] text-gray-400">Available</div><div class="font-black text-2xl">₦<span id="bal3">0</span></div><div class="text-[10px] text-gray-300">Circlebookapp@hotmail.com</div></div><select class="w-full border rounded-xl px-3 py-2 mt-3 text-sm"><option>GTB Bank</option><option>Paga</option><option>Grey</option><option>PayPal</option></select><input id="amt" placeholder="Amount" class="w-full border rounded-xl px-3 py-2 mt-2"><button onclick="withdraw()" class="w-full bg-black text-white py-3 rounded-full font-bold mt-3">Withdraw to Bank</button><button onclick="closeW()" class="w-full mt-2 text-sm">Close</button></div></div>
+
+<script>
+let b=parseInt(localStorage.getItem('cb_bal')||'0');
+function upd(){document.getElementById('bal').innerText=b;document.getElementById('bal2').innerText=b;document.getElementById('bal3').innerText=b;}
+upd();
+function openAuth(){document.getElementById('auth').classList.remove('hidden')}
+function closeAuth(){document.getElementById('auth').classList.add('hidden')}
+function doAuth(){document.getElementById('otpBox').classList.remove('hidden')}
+function verify(){const o=document.getElementById('otp').value;if(o!=='123456'&&o!=='654321'){alert('OTP 123456');return}b+=50;localStorage.setItem('cb_bal',b);upd();closeAuth();alert('Welcome to CircleBook! You earned ₦50');}
+function openWallet(){document.getElementById('walletM').classList.remove('hidden');upd()}
+function closeW(){document.getElementById('walletM').classList.add('hidden')}
+function withdraw(){const a=document.getElementById('amt').value;if(!a)return alert('Enter amount');if(parseInt(a)>b)return alert('Low balance');b-=parseInt(a);localStorage.setItem('cb_bal',b);upd();alert('Withdrawal ₦'+a+' to bank initiated. Support: Circlebookapp@hotmail.com');closeW();}
+function openChat(n){alert(n+' - Coming in Phase 2! Full 23 features building. Contact: Circlebookapp@hotmail.com');b+=2;localStorage.setItem('cb_bal',b);upd();}
+</script>
+</body></html>
